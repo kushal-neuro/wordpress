@@ -30,8 +30,7 @@ class wordpress::app inherits wordpress{
   package { 'wget':
 	 name    => 'wget',
 	 ensure  => present,
-   }
-  
+   }  
   
   exec { "Download wordpress ${install_url}/wordpress-${version}.tar.gz to ${install_dir}":
     command => "wget ${install_url}/${install_file_name}",
