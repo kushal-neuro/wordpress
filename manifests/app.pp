@@ -1,4 +1,4 @@
-class wordpress::app inherits wordpress{
+class wordpress::app inherits wordpress {
 
   ## Download and extract
   $install_file_name = "wordpress-${version}.tar.gz"

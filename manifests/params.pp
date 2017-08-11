@@ -10,22 +10,17 @@ class wordpress::params {
     $confsource   = 'puppet:///modules/apache/apache2.conf'  
   }else {
     fail('This is unsupported destro') 
-  }
-  
-    $root_password = 'Neuro@123'
-	$db_name = 'wordpress'
-	$db_user = 'wp'
-	$db_user_password = 'password123'
-	$db_host = 'localhost'
-	
-	$db_user_host = "${db_user}@${db_host}"	
-	$db_user_host_db = "${db_user}@${db_host}/${db_name}.*"
-	
-	$install_dir          = '/var/www/html'
-	$install_url          = 'http://wordpress.org'
-	$version              = '3.8'
-	$wp_owner              = 'root'
-	$wp_group              = 0
+  }      
+	$db_name         = 'wordpress'
+	$db_user         = 'wp'	
+	$db_host         = 'localhost'	
+	$db_user_host    = "${db_user}@${db_host}"	
+	$db_user_host_db = "${db_user}@${db_host}/${db_name}.*"	
+	$install_dir     = '/var/www/html'
+	$install_url     = 'http://wordpress.org'
+	$version         = '3.8'
+	$wp_owner        = 'root'
+	$wp_group        = 0
    
 
 }

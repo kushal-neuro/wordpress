@@ -1,0 +1,1519 @@
+{
+  "tags": [
+    "settings",
+    "wordpress::params",
+    "wordpress",
+    "params",
+    "wordpress::apache",
+    "apache",
+    "wordpress::php",
+    "php",
+    "wordpress::db",
+    "db",
+    "mysql::params",
+    "mysql",
+    "mysql::server",
+    "server",
+    "mysql::server::config",
+    "config",
+    "mysql::server::install",
+    "install",
+    "mysql::server::binarylog",
+    "binarylog",
+    "mysql::server::installdb",
+    "installdb",
+    "mysql::server::service",
+    "service",
+    "mysql::server::root_password",
+    "root_password",
+    "mysql::server::providers",
+    "providers",
+    "mysql::client",
+    "client",
+    "mysql::client::install",
+    "wordpress::app",
+    "app",
+    "class"
+  ],
+  "name": "agent1.example.com",
+  "version": 1502412245,
+  "code_id": null,
+  "catalog_uuid": "32a82430-8786-49c7-8e2e-e20abaad2c03",
+  "catalog_format": 1,
+  "environment": "rp_env",
+  "resources": [
+    {
+      "type": "Stage",
+      "title": "main",
+      "tags": [
+        "stage"
+      ],
+      "exported": false,
+      "parameters": {
+        "name": "main"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Settings",
+      "tags": [
+        "class",
+        "settings"
+      ],
+      "exported": false
+    },
+    {
+      "type": "Class",
+      "title": "main",
+      "tags": [
+        "class"
+      ],
+      "exported": false,
+      "parameters": {
+        "name": "main"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Wordpress::Params",
+      "tags": [
+        "class",
+        "wordpress::params",
+        "wordpress",
+        "params"
+      ],
+      "exported": false
+    },
+    {
+      "type": "Class",
+      "title": "Wordpress",
+      "tags": [
+        "class",
+        "wordpress"
+      ],
+      "file": "",
+      "line": 2,
+      "exported": false,
+      "parameters": {
+        "root_password": "Neuro@123",
+        "db_user_password": "password123",
+        "apachename": "httpd",
+        "conffile": "/etc/httpd/conf/httpd.conf",
+        "confsource": "puppet:///modules/apache/httpd.conf",
+        "db_name": "wordpress",
+        "db_user": "wp",
+        "db_host": "localhost",
+        "db_user_host": "wp@localhost",
+        "db_user_host_db": "wp@localhost/wordpress.*",
+        "install_dir": "/var/www/html",
+        "install_url": "http://wordpress.org",
+        "version": "3.8",
+        "wp_owner": "root",
+        "wp_group": 0
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Wordpress::Apache",
+      "tags": [
+        "class",
+        "wordpress::apache",
+        "wordpress",
+        "apache"
+      ],
+      "exported": false
+    },
+    {
+      "type": "Package",
+      "title": "apache",
+      "tags": [
+        "package",
+        "apache",
+        "class",
+        "wordpress::apache",
+        "wordpress"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/apache.pp",
+      "line": 5,
+      "exported": false,
+      "parameters": {
+        "name": "httpd",
+        "ensure": "present"
+      }
+    },
+    {
+      "type": "File",
+      "title": "configuration file",
+      "tags": [
+        "file",
+        "class",
+        "wordpress::apache",
+        "wordpress",
+        "apache"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/apache.pp",
+      "line": 10,
+      "exported": false,
+      "parameters": {
+        "path": "/etc/httpd/conf/httpd.conf",
+        "ensure": "file",
+        "source": "puppet:///modules/apache/httpd.conf",
+        "notify": "Service[apache-service]"
+      }
+    },
+    {
+      "type": "Service",
+      "title": "apache-service",
+      "tags": [
+        "service",
+        "apache-service",
+        "class",
+        "wordpress::apache",
+        "wordpress",
+        "apache"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/apache.pp",
+      "line": 17,
+      "exported": false,
+      "parameters": {
+        "name": "httpd",
+        "hasrestart": true
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Wordpress::Php",
+      "tags": [
+        "class",
+        "wordpress::php",
+        "wordpress",
+        "php"
+      ],
+      "exported": false
+    },
+    {
+      "type": "Package",
+      "title": "php",
+      "tags": [
+        "package",
+        "php",
+        "class",
+        "wordpress::php",
+        "wordpress"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/php.pp",
+      "line": 9,
+      "exported": false,
+      "parameters": {
+        "ensure": "present"
+      }
+    },
+    {
+      "type": "Package",
+      "title": "php-pear",
+      "tags": [
+        "package",
+        "php-pear",
+        "class",
+        "wordpress::php",
+        "wordpress",
+        "php"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/php.pp",
+      "line": 14,
+      "exported": false,
+      "parameters": {
+        "ensure": "present"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Wordpress::Db",
+      "tags": [
+        "class",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Params",
+      "tags": [
+        "class",
+        "mysql::params",
+        "mysql",
+        "params",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server",
+      "tags": [
+        "class",
+        "mysql::server",
+        "mysql",
+        "server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/db.pp",
+      "line": 3,
+      "exported": false,
+      "parameters": {
+        "root_password": "Neuro@123",
+        "databases": {
+          "wordpress": {
+            "ensure": "present",
+            "charset": "utf8"
+          }
+        },
+        "users": {
+          "wp@localhost": {
+            "ensure": "present",
+            "password_hash": "*A0F874BC7F54EE086FCE60A37CE7887D8B31086B"
+          }
+        },
+        "grants": {
+          "wp@localhost/wordpress.*": {
+            "ensure": "present",
+            "options": [
+              "GRANT"
+            ],
+            "privileges": [
+              "ALL"
+            ],
+            "table": "wordpress.*",
+            "user": "wp@localhost"
+          }
+        },
+        "config_file": "/etc/my.cnf.d/server.cnf",
+        "install_secret_file": "/.mysql_secret",
+        "manage_config_file": true,
+        "override_options": {
+
+        },
+        "package_ensure": "present",
+        "package_manage": true,
+        "package_name": "mariadb-server",
+        "purge_conf_dir": false,
+        "remove_default_accounts": false,
+        "restart": false,
+        "root_group": "root",
+        "mysql_group": "mysql",
+        "service_enabled": true,
+        "service_manage": true,
+        "service_name": "mariadb",
+        "create_root_user": true,
+        "create_root_my_cnf": true
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Config",
+      "tags": [
+        "class",
+        "mysql::server::config",
+        "mysql",
+        "server",
+        "config",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Install]"
+        ]
+      }
+    },
+    {
+      "type": "File",
+      "title": "mysql-config-file",
+      "tags": [
+        "file",
+        "mysql-config-file",
+        "class",
+        "mysql::server::config",
+        "mysql",
+        "server",
+        "config",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/config.pp",
+      "line": 33,
+      "exported": false,
+      "parameters": {
+        "path": "/etc/my.cnf.d/server.cnf",
+        "content": "### MANAGED BY PUPPET ###\n\n[client]\nport = 3306\nsocket = /var/lib/mysql/mysql.sock\n\n[isamchk]\nkey_buffer_size = 16M\n\n[mysqld]\nbasedir = /usr\nbind-address = 127.0.0.1\ndatadir = /var/lib/mysql\nexpire_logs_days = 10\nkey_buffer_size = 16M\nlog-error = /var/log/mariadb/mariadb.log\nmax_allowed_packet = 16M\nmax_binlog_size = 100M\nmax_connections = 151\npid-file = /var/run/mariadb/mariadb.pid\nport = 3306\nquery_cache_limit = 1M\nquery_cache_size = 16M\nskip-external-locking\nsocket = /var/lib/mysql/mysql.sock\nssl = false\nssl-ca = /etc/mysql/cacert.pem\nssl-cert = /etc/mysql/server-cert.pem\nssl-key = /etc/mysql/server-key.pem\nthread_cache_size = 8\nthread_stack = 256K\ntmpdir = /tmp\nuser = mysql\n\n[mysqld-5.0]\nmyisam-recover = BACKUP\n\n[mysqld-5.1]\nmyisam-recover = BACKUP\n\n[mysqld-5.5]\nmyisam-recover = BACKUP\n\n[mysqld-5.6]\nmyisam-recover-options = BACKUP\n\n[mysqld-5.7]\nmyisam-recover-options = BACKUP\n\n[mysqld_safe]\nlog-error = /var/log/mariadb/mariadb.log\nnice = 0\nsocket = /var/lib/mysql/mysql.sock\n\n[mysqldump]\nmax_allowed_packet = 16M\nquick\nquote-names\n\n\n\n",
+        "mode": "0644",
+        "selinux_ignore_defaults": true,
+        "owner": "root",
+        "group": "root",
+        "before": [
+          "Service[mysqld]"
+        ]
+      }
+    },
+    {
+      "type": "File",
+      "title": "/etc/my.cnf.d",
+      "tags": [
+        "file",
+        "class",
+        "mysql::server::config",
+        "mysql",
+        "server",
+        "config",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/config.pp",
+      "line": 44,
+      "exported": false,
+      "parameters": {
+        "ensure": "directory",
+        "mode": "0755",
+        "owner": "root",
+        "group": "root"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Install",
+      "tags": [
+        "class",
+        "mysql::server::install",
+        "mysql",
+        "server",
+        "install",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Binarylog]"
+        ]
+      }
+    },
+    {
+      "type": "Package",
+      "title": "mysql-server",
+      "tags": [
+        "package",
+        "mysql-server",
+        "class",
+        "mysql::server::install",
+        "mysql",
+        "server",
+        "install",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/install.pp",
+      "line": 6,
+      "exported": false,
+      "parameters": {
+        "name": "mariadb-server",
+        "ensure": "present"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Binarylog",
+      "tags": [
+        "class",
+        "mysql::server::binarylog",
+        "mysql",
+        "server",
+        "binarylog",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Installdb]"
+        ]
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Installdb",
+      "tags": [
+        "class",
+        "mysql::server::installdb",
+        "mysql",
+        "server",
+        "installdb",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Service]"
+        ]
+      }
+    },
+    {
+      "type": "File",
+      "title": "/var/log/mariadb/mariadb.log",
+      "tags": [
+        "file",
+        "class",
+        "mysql::server::installdb",
+        "mysql",
+        "server",
+        "installdb",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/installdb.pp",
+      "line": 21,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "owner": "mysql",
+        "group": "mysql",
+        "mode": "u+rw",
+        "require": "Mysql_datadir[/var/lib/mysql]"
+      }
+    },
+    {
+      "type": "Mysql_datadir",
+      "title": "/var/lib/mysql",
+      "tags": [
+        "mysql_datadir",
+        "class",
+        "mysql::server::installdb",
+        "mysql",
+        "server",
+        "installdb",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/installdb.pp",
+      "line": 30,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "basedir": "/usr",
+        "user": "mysql",
+        "log_error": "/var/log/mariadb/mariadb.log"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Service",
+      "tags": [
+        "class",
+        "mysql::server::service",
+        "mysql",
+        "server",
+        "service",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Root_password]"
+        ]
+      }
+    },
+    {
+      "type": "Service",
+      "title": "mysqld",
+      "tags": [
+        "service",
+        "mysqld",
+        "class",
+        "mysql::server::service",
+        "mysql",
+        "server",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/service.pp",
+      "line": 22,
+      "exported": false,
+      "parameters": {
+        "name": "mariadb",
+        "ensure": "running",
+        "enable": true,
+        "require": "Package[mysql-server]"
+      }
+    },
+    {
+      "type": "Exec",
+      "title": "wait_for_mysql_socket_to_open",
+      "tags": [
+        "exec",
+        "wait_for_mysql_socket_to_open",
+        "class",
+        "mysql::server::service",
+        "mysql",
+        "server",
+        "service",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/service.pp",
+      "line": 50,
+      "exported": false,
+      "parameters": {
+        "command": "test -S /var/lib/mysql/mysql.sock",
+        "unless": "test -S /var/lib/mysql/mysql.sock",
+        "tries": "3",
+        "try_sleep": "10",
+        "require": "Service[mysqld]",
+        "path": "/bin:/usr/bin"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Root_password",
+      "tags": [
+        "class",
+        "mysql::server::root_password",
+        "mysql",
+        "server",
+        "root_password",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Providers]"
+        ]
+      }
+    },
+    {
+      "type": "Exec",
+      "title": "remove install pass",
+      "tags": [
+        "exec",
+        "class",
+        "mysql::server::root_password",
+        "mysql",
+        "server",
+        "root_password",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/root_password.pp",
+      "line": 15,
+      "exported": false,
+      "parameters": {
+        "command": "mysqladmin -u root --password=$(grep -o '[^ ]\\+$' /.mysql_secret) password '' && rm -f /.mysql_secret",
+        "onlyif": "test -f /.mysql_secret",
+        "path": "/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+      }
+    },
+    {
+      "type": "Mysql_user",
+      "title": "root@localhost",
+      "tags": [
+        "mysql_user",
+        "class",
+        "mysql::server::root_password",
+        "mysql",
+        "server",
+        "root_password",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/root_password.pp",
+      "line": 23,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "password_hash": "*BE77FEA8187054F8B5A2F63E87AF75E296B51094",
+        "require": "Exec[remove install pass]",
+        "before": [
+          "File[/root/.my.cnf]"
+        ]
+      }
+    },
+    {
+      "type": "File",
+      "title": "/root/.my.cnf",
+      "tags": [
+        "file",
+        "class",
+        "mysql::server::root_password",
+        "mysql",
+        "server",
+        "root_password",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/root_password.pp",
+      "line": 31,
+      "exported": false,
+      "parameters": {
+        "content": "### MANAGED BY PUPPET ###\n\n\n[mysql]\nuser=root\nhost=localhost\npassword='Neuro@123'\nsocket=/var/lib/mysql/mysql.sock\n\n[client]\nuser=root\nhost=localhost\npassword='Neuro@123'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqldump]\nuser=root\nhost=localhost\npassword='Neuro@123'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqladmin]\nuser=root\nhost=localhost\npassword='Neuro@123'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqlcheck]\nuser=root\nhost=localhost\npassword='Neuro@123'\nsocket=/var/lib/mysql/mysql.sock\n\n",
+        "owner": "root",
+        "mode": "0600",
+        "show_diff": false
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Server::Providers",
+      "tags": [
+        "class",
+        "mysql::server::providers",
+        "mysql",
+        "server",
+        "providers",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Anchor[mysql::server::end]"
+        ]
+      }
+    },
+    {
+      "type": "Mysql_user",
+      "title": "wp@localhost",
+      "tags": [
+        "mysql_user",
+        "class",
+        "mysql::server::providers",
+        "mysql",
+        "server",
+        "providers",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/providers.pp",
+      "line": 5,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "password_hash": "*A0F874BC7F54EE086FCE60A37CE7887D8B31086B"
+      }
+    },
+    {
+      "type": "Mysql_grant",
+      "title": "wp@localhost/wordpress.*",
+      "tags": [
+        "mysql_grant",
+        "class",
+        "mysql::server::providers",
+        "mysql",
+        "server",
+        "providers",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/providers.pp",
+      "line": 6,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "options": [
+          "GRANT"
+        ],
+        "privileges": [
+          "ALL"
+        ],
+        "table": "wordpress.*",
+        "user": "wp@localhost"
+      }
+    },
+    {
+      "type": "Mysql_database",
+      "title": "wordpress",
+      "tags": [
+        "mysql_database",
+        "wordpress",
+        "class",
+        "mysql::server::providers",
+        "mysql",
+        "server",
+        "providers",
+        "mysql::server",
+        "wordpress::db",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server/providers.pp",
+      "line": 7,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "charset": "utf8"
+      }
+    },
+    {
+      "type": "Anchor",
+      "title": "mysql::server::start",
+      "tags": [
+        "anchor",
+        "mysql::server::start",
+        "mysql",
+        "server",
+        "start",
+        "class",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server.pp",
+      "line": 70,
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Server::Config]"
+        ]
+      }
+    },
+    {
+      "type": "Anchor",
+      "title": "mysql::server::end",
+      "tags": [
+        "anchor",
+        "mysql::server::end",
+        "mysql",
+        "server",
+        "end",
+        "class",
+        "mysql::server",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/server.pp",
+      "line": 71,
+      "exported": false
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Client",
+      "tags": [
+        "class",
+        "mysql::client",
+        "mysql",
+        "client",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/db.pp",
+      "line": 33,
+      "exported": false,
+      "parameters": {
+        "require": "Class[Mysql::Server]",
+        "bindings_enable": false,
+        "package_ensure": "present",
+        "package_manage": true,
+        "package_name": "mariadb"
+      }
+    },
+    {
+      "type": "Class",
+      "title": "Mysql::Client::Install",
+      "tags": [
+        "class",
+        "mysql::client::install",
+        "mysql",
+        "client",
+        "install",
+        "mysql::client",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Anchor[mysql::client::end]"
+        ]
+      }
+    },
+    {
+      "type": "Package",
+      "title": "mysql_client",
+      "tags": [
+        "package",
+        "mysql_client",
+        "class",
+        "mysql::client::install",
+        "mysql",
+        "client",
+        "install",
+        "mysql::client",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/client/install.pp",
+      "line": 6,
+      "exported": false,
+      "parameters": {
+        "name": "mariadb",
+        "ensure": "present"
+      }
+    },
+    {
+      "type": "Anchor",
+      "title": "mysql::client::start",
+      "tags": [
+        "anchor",
+        "mysql::client::start",
+        "mysql",
+        "client",
+        "start",
+        "class",
+        "mysql::client",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/client.pp",
+      "line": 24,
+      "exported": false,
+      "parameters": {
+        "before": [
+          "Class[Mysql::Client::Install]"
+        ]
+      }
+    },
+    {
+      "type": "Anchor",
+      "title": "mysql::client::end",
+      "tags": [
+        "anchor",
+        "mysql::client::end",
+        "mysql",
+        "client",
+        "end",
+        "class",
+        "mysql::client",
+        "wordpress::db",
+        "wordpress",
+        "db"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/mysql/manifests/client.pp",
+      "line": 26,
+      "exported": false
+    },
+    {
+      "type": "Class",
+      "title": "Wordpress::App",
+      "tags": [
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "exported": false
+    },
+    {
+      "type": "File",
+      "title": "/var/www/html",
+      "tags": [
+        "file",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 22,
+      "exported": false,
+      "parameters": {
+        "ensure": "directory",
+        "recurse": true,
+        "owner": "root",
+        "group": 0,
+        "mode": "0644"
+      }
+    },
+    {
+      "type": "Package",
+      "title": "wget",
+      "tags": [
+        "package",
+        "wget",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 30,
+      "exported": false,
+      "parameters": {
+        "ensure": "present"
+      }
+    },
+    {
+      "type": "Exec",
+      "title": "Download wordpress http://wordpress.org/wordpress-3.8.tar.gz to /var/www/html",
+      "tags": [
+        "exec",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 35,
+      "exported": false,
+      "parameters": {
+        "command": "wget http://wordpress.org/wordpress-3.8.tar.gz",
+        "creates": "/var/www/html/wordpress-3.8.tar.gz",
+        "require": "File[/var/www/html]",
+        "user": "root",
+        "group": 0,
+        "path": [
+          "/bin",
+          "/sbin",
+          "/usr/bin",
+          "/usr/sbin"
+        ],
+        "cwd": "/var/www/html",
+        "logoutput": "on_failure",
+        "before": [
+          "Exec[Extract wordpress /var/www/html]"
+        ]
+      }
+    },
+    {
+      "type": "Exec",
+      "title": "Extract wordpress /var/www/html",
+      "tags": [
+        "exec",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 42,
+      "exported": false,
+      "parameters": {
+        "command": "tar zxvf ./wordpress-3.8.tar.gz --strip-components=1",
+        "creates": "/var/www/html/index.php",
+        "user": "root",
+        "group": 0,
+        "path": [
+          "/bin",
+          "/sbin",
+          "/usr/bin",
+          "/usr/sbin"
+        ],
+        "cwd": "/var/www/html",
+        "logoutput": "on_failure",
+        "notify": [
+          "Exec[Change ownership /var/www/html]"
+        ]
+      }
+    },
+    {
+      "type": "Exec",
+      "title": "Change ownership /var/www/html",
+      "tags": [
+        "exec",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 48,
+      "exported": false,
+      "parameters": {
+        "command": "chown -R root:0 /var/www/html",
+        "refreshonly": true,
+        "user": "root",
+        "group": 0,
+        "path": [
+          "/bin",
+          "/sbin",
+          "/usr/bin",
+          "/usr/sbin"
+        ],
+        "cwd": "/var/www/html",
+        "logoutput": "on_failure"
+      }
+    },
+    {
+      "type": "Concat",
+      "title": "/var/www/html/wp-config.php",
+      "tags": [
+        "concat",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 57,
+      "exported": false,
+      "parameters": {
+        "owner": "root",
+        "group": 0,
+        "mode": "0644",
+        "require": "Exec[Extract wordpress /var/www/html]",
+        "ensure": "present",
+        "path": "/var/www/html/wp-config.php",
+        "warn": false,
+        "show_diff": true,
+        "backup": "puppet",
+        "replace": true,
+        "order": "alpha",
+        "ensure_newline": false
+      }
+    },
+    {
+      "type": "File",
+      "title": "/var/www/html/wp-keysalts.php",
+      "tags": [
+        "file",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 65,
+      "exported": false,
+      "parameters": {
+        "ensure": "present",
+        "content": "<?php\n/**#@+\n * Authentication Unique Keys and Salts.\n *\n * Change these to different unique phrases!\n * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}\n * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.\n *\n * @since 2.6.0\n */\ndefine('AUTH_KEY',         'P)D3KOb+]Z)||cat=?9iOSro)lQ/s;O(hz w|9K87SN7vUK)wb=zn$<O0wCb65rv');\ndefine('SECURE_AUTH_KEY',  'P*.Ivp3qq-j#a:UFG[!+N F70stjvi.sOCmBMNa=95U}n5H[K[-07j*PlQQ]Q {4');\ndefine('LOGGED_IN_KEY',    '~?f%]9})k+ATd*pyA`$m]twGqcxxDy/-5aMoJ$i8;|pg%ytt^akvelL6l?LviZ_+');\ndefine('NONCE_KEY',        '|H 1+6wg3~o`Ys#zk(SWJX/8,ogX^>Nu^XSDnYF2,>|B!._0RcTmG{ay=&EiBJa4');\ndefine('AUTH_SALT',        '|aeA+>Dv_(*Snd~vX>{Q|r,4,p>z|Loqy?Oz#to|GxR-PfETYj22QswiMw/_T|:+');\ndefine('SECURE_AUTH_SALT', 'VhE4[efC&F|+]|DjSo*)v7?SnF-So`&4Z[SRD6j+JQr xHmW.U:dXSojkiDFlGe~');\ndefine('LOGGED_IN_SALT',   'v(5+!ChNbq`^10T]oZm-MzzP8|sCk/fd_-:s?sU.`}h,?Z= ,p+XK@J5x`:d3Nvv');\ndefine('NONCE_SALT',       '80MawcG|T><i3sU<1tM[Z46yx?j&9u?) DVUt+g;9{%K9%}`I1V*}{SE) PeQ*+f');\n\n/**#@-*/\n",
+        "replace": false,
+        "require": "Exec[Extract wordpress /var/www/html]",
+        "owner": "root",
+        "group": 0,
+        "mode": "0644"
+      }
+    },
+    {
+      "type": "Concat::Fragment",
+      "title": "/var/www/html/wp-config.php keysalts",
+      "tags": [
+        "concat::fragment",
+        "concat",
+        "fragment",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 71,
+      "exported": false,
+      "parameters": {
+        "target": "/var/www/html/wp-config.php",
+        "source": "/var/www/html/wp-keysalts.php",
+        "order": "10",
+        "require": "File[/var/www/html/wp-keysalts.php]"
+      }
+    },
+    {
+      "type": "Concat::Fragment",
+      "title": "/var/www/html/wp-config.php body",
+      "tags": [
+        "concat::fragment",
+        "concat",
+        "fragment",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/wordpress/manifests/app.pp",
+      "line": 78,
+      "exported": false,
+      "parameters": {
+        "target": "/var/www/html/wp-config.php",
+        "content": "/**\n * The base configurations of the WordPress.\n *\n * This file has the following configurations: MySQL settings, Table Prefix,\n * Secret Keys, WordPress Language, and ABSPATH. You can find more information\n * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing\n * wp-config.php} Codex page. You can get the MySQL settings from your web host.\n *\n * This file is used by the wp-config.php creation script during the\n * installation. You don't have to use the web site, you can just copy this file\n * to \"wp-config.php\" and fill in the values.\n *\n * @package WordPress\n */\n\n// ** MySQL settings - You can get this info from your web host ** //\n/** The name of the database for WordPress */\ndefine('DB_NAME', 'wordpress');\n\n/** MySQL database username */\ndefine('DB_USER', 'wp');\n\n/** MySQL database password */\ndefine('DB_PASSWORD', 'password123');\n\n/** MySQL hostname */\ndefine('DB_HOST', 'localhost');\n\n/** Database Charset to use in creating database tables. */\ndefine('DB_CHARSET', 'utf8');\n\n/** The Database Collate type. Don't change this if in doubt. */\ndefine('DB_COLLATE', '');\n\n/**\n * WordPress Database Table prefix.\n *\n * You can have multiple installations in one database if you give each a unique\n * prefix. Only numbers, letters, and underscores please!\n */\n$table_prefix  = 'wp_';\n\n/**\n * WordPress Localized Language, defaults to English.\n *\n * Change this to localize WordPress. A corresponding MO file for the chosen\n * language must be installed to wp-content/languages. For example, install\n * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German\n * language support.\n */\ndefine('WPLANG', '');\n\n/**\n * For developers: WordPress debugging mode.\n *\n * Change this to true to enable the display of notices during development.\n * It is strongly recommended that plugin and theme developers use WP_DEBUG\n * in their development environments.\n */\ndefine('WP_DEBUG', false);\n\n/* That's all, stop editing! Happy blogging. */\n\n/** Absolute path to the WordPress directory. */\nif ( !defined('ABSPATH') )\n\tdefine('ABSPATH', dirname(__FILE__) . '/');\n\n/** Sets up WordPress vars and included files. */\nrequire_once(ABSPATH . 'wp-settings.php');\n",
+        "order": "20"
+      }
+    },
+    {
+      "type": "Concat_file",
+      "title": "/var/www/html/wp-config.php",
+      "tags": [
+        "_var_www_html_wp-config.php",
+        "concat_file",
+        "concat",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/concat/manifests/init.pp",
+      "line": 84,
+      "exported": false,
+      "parameters": {
+        "tag": "_var_www_html_wp-config.php",
+        "owner": "root",
+        "group": 0,
+        "mode": "0644",
+        "replace": true,
+        "backup": "puppet",
+        "show_diff": true,
+        "order": "alpha",
+        "ensure_newline": false
+      }
+    },
+    {
+      "type": "Concat_fragment",
+      "title": "/var/www/html/wp-config.php keysalts",
+      "tags": [
+        "_var_www_html_wp-config.php",
+        "concat_fragment",
+        "concat::fragment",
+        "concat",
+        "fragment",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/concat/manifests/fragment.pp",
+      "line": 30,
+      "exported": false,
+      "parameters": {
+        "target": "/var/www/html/wp-config.php",
+        "tag": "_var_www_html_wp-config.php",
+        "order": "10",
+        "source": "/var/www/html/wp-keysalts.php"
+      }
+    },
+    {
+      "type": "Concat_fragment",
+      "title": "/var/www/html/wp-config.php body",
+      "tags": [
+        "_var_www_html_wp-config.php",
+        "concat_fragment",
+        "concat::fragment",
+        "concat",
+        "fragment",
+        "class",
+        "wordpress::app",
+        "wordpress",
+        "app"
+      ],
+      "file": "/home/kushal/modules/wordpress/spec/fixtures/modules/concat/manifests/fragment.pp",
+      "line": 30,
+      "exported": false,
+      "parameters": {
+        "target": "/var/www/html/wp-config.php",
+        "tag": "_var_www_html_wp-config.php",
+        "order": "20",
+        "content": "/**\n * The base configurations of the WordPress.\n *\n * This file has the following configurations: MySQL settings, Table Prefix,\n * Secret Keys, WordPress Language, and ABSPATH. You can find more information\n * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing\n * wp-config.php} Codex page. You can get the MySQL settings from your web host.\n *\n * This file is used by the wp-config.php creation script during the\n * installation. You don't have to use the web site, you can just copy this file\n * to \"wp-config.php\" and fill in the values.\n *\n * @package WordPress\n */\n\n// ** MySQL settings - You can get this info from your web host ** //\n/** The name of the database for WordPress */\ndefine('DB_NAME', 'wordpress');\n\n/** MySQL database username */\ndefine('DB_USER', 'wp');\n\n/** MySQL database password */\ndefine('DB_PASSWORD', 'password123');\n\n/** MySQL hostname */\ndefine('DB_HOST', 'localhost');\n\n/** Database Charset to use in creating database tables. */\ndefine('DB_CHARSET', 'utf8');\n\n/** The Database Collate type. Don't change this if in doubt. */\ndefine('DB_COLLATE', '');\n\n/**\n * WordPress Database Table prefix.\n *\n * You can have multiple installations in one database if you give each a unique\n * prefix. Only numbers, letters, and underscores please!\n */\n$table_prefix  = 'wp_';\n\n/**\n * WordPress Localized Language, defaults to English.\n *\n * Change this to localize WordPress. A corresponding MO file for the chosen\n * language must be installed to wp-content/languages. For example, install\n * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German\n * language support.\n */\ndefine('WPLANG', '');\n\n/**\n * For developers: WordPress debugging mode.\n *\n * Change this to true to enable the display of notices during development.\n * It is strongly recommended that plugin and theme developers use WP_DEBUG\n * in their development environments.\n */\ndefine('WP_DEBUG', false);\n\n/* That's all, stop editing! Happy blogging. */\n\n/** Absolute path to the WordPress directory. */\nif ( !defined('ABSPATH') )\n\tdefine('ABSPATH', dirname(__FILE__) . '/');\n\n/** Sets up WordPress vars and included files. */\nrequire_once(ABSPATH . 'wp-settings.php');\n"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "Stage[main]",
+      "target": "Class[Settings]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[main]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Wordpress::Params]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Wordpress]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Wordpress::Apache]"
+    },
+    {
+      "source": "Class[Wordpress]",
+      "target": "Class[Wordpress::Apache]"
+    },
+    {
+      "source": "Class[Wordpress::Apache]",
+      "target": "Package[apache]"
+    },
+    {
+      "source": "Class[Wordpress::Apache]",
+      "target": "File[configuration file]"
+    },
+    {
+      "source": "Class[Wordpress::Apache]",
+      "target": "Service[apache-service]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Wordpress::Php]"
+    },
+    {
+      "source": "Class[Wordpress]",
+      "target": "Class[Wordpress::Php]"
+    },
+    {
+      "source": "Class[Wordpress::Php]",
+      "target": "Package[php]"
+    },
+    {
+      "source": "Class[Wordpress::Php]",
+      "target": "Package[php-pear]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Wordpress::Db]"
+    },
+    {
+      "source": "Class[Wordpress]",
+      "target": "Class[Wordpress::Db]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Params]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Config]"
+    },
+    {
+      "source": "Class[Mysql::Server::Config]",
+      "target": "File[mysql-config-file]"
+    },
+    {
+      "source": "Class[Mysql::Server::Config]",
+      "target": "File[/etc/my.cnf.d]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Install]"
+    },
+    {
+      "source": "Class[Mysql::Server::Install]",
+      "target": "Package[mysql-server]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Binarylog]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Installdb]"
+    },
+    {
+      "source": "Class[Mysql::Server::Installdb]",
+      "target": "File[/var/log/mariadb/mariadb.log]"
+    },
+    {
+      "source": "Class[Mysql::Server::Installdb]",
+      "target": "Mysql_datadir[/var/lib/mysql]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Service]"
+    },
+    {
+      "source": "Class[Mysql::Server::Service]",
+      "target": "Service[mysqld]"
+    },
+    {
+      "source": "Class[Mysql::Server::Service]",
+      "target": "Exec[wait_for_mysql_socket_to_open]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Root_password]"
+    },
+    {
+      "source": "Class[Mysql::Server::Root_password]",
+      "target": "Exec[remove install pass]"
+    },
+    {
+      "source": "Class[Mysql::Server::Root_password]",
+      "target": "Mysql_user[root@localhost]"
+    },
+    {
+      "source": "Class[Mysql::Server::Root_password]",
+      "target": "File[/root/.my.cnf]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Server::Providers]"
+    },
+    {
+      "source": "Class[Mysql::Server::Providers]",
+      "target": "Mysql_user[wp@localhost]"
+    },
+    {
+      "source": "Class[Mysql::Server::Providers]",
+      "target": "Mysql_grant[wp@localhost/wordpress.*]"
+    },
+    {
+      "source": "Class[Mysql::Server::Providers]",
+      "target": "Mysql_database[wordpress]"
+    },
+    {
+      "source": "Class[Mysql::Server]",
+      "target": "Anchor[mysql::server::start]"
+    },
+    {
+      "source": "Class[Mysql::Server]",
+      "target": "Anchor[mysql::server::end]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Client]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Mysql::Client::Install]"
+    },
+    {
+      "source": "Class[Mysql::Client::Install]",
+      "target": "Package[mysql_client]"
+    },
+    {
+      "source": "Class[Mysql::Client]",
+      "target": "Anchor[mysql::client::start]"
+    },
+    {
+      "source": "Class[Mysql::Client]",
+      "target": "Anchor[mysql::client::end]"
+    },
+    {
+      "source": "Stage[main]",
+      "target": "Class[Wordpress::App]"
+    },
+    {
+      "source": "Class[Wordpress]",
+      "target": "Class[Wordpress::App]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "File[/var/www/html]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Package[wget]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Exec[Download wordpress http://wordpress.org/wordpress-3.8.tar.gz to /var/www/html]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Exec[Extract wordpress /var/www/html]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Exec[Change ownership /var/www/html]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Concat[/var/www/html/wp-config.php]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "File[/var/www/html/wp-keysalts.php]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Concat::Fragment[/var/www/html/wp-config.php keysalts]"
+    },
+    {
+      "source": "Class[Wordpress::App]",
+      "target": "Concat::Fragment[/var/www/html/wp-config.php body]"
+    },
+    {
+      "source": "Concat[/var/www/html/wp-config.php]",
+      "target": "Concat_file[/var/www/html/wp-config.php]"
+    },
+    {
+      "source": "Concat::Fragment[/var/www/html/wp-config.php keysalts]",
+      "target": "Concat_fragment[/var/www/html/wp-config.php keysalts]"
+    },
+    {
+      "source": "Concat::Fragment[/var/www/html/wp-config.php body]",
+      "target": "Concat_fragment[/var/www/html/wp-config.php body]"
+    }
+  ],
+  "classes": [
+    "settings",
+    "wordpress::params",
+    "wordpress",
+    "wordpress::apache",
+    "wordpress::php",
+    "wordpress::db",
+    "mysql::params",
+    "mysql::server",
+    "mysql::server::config",
+    "mysql::server::install",
+    "mysql::server::binarylog",
+    "mysql::server::installdb",
+    "mysql::server::service",
+    "mysql::server::root_password",
+    "mysql::server::providers",
+    "mysql::client",
+    "mysql::client::install",
+    "wordpress::app"
+  ]
+}

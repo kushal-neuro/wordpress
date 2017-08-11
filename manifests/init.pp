@@ -43,13 +43,12 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class wordpress (
+  $root_password, $db_user_password,
   $apachename       = $wordpress::params::apachename, 
   $conffile         = $wordpress::params::conffile, 
-  $confsource       = $wordpress::params::confsource, 
-  $root_password    = $wordpress::params::root_password,
+  $confsource       = $wordpress::params::confsource,  
   $db_name          = $wordpress::params::db_name, 
-  $db_user          = $wordpress::params::db_user,
-  $db_user_password = $wordpress::params::db_user_password,
+  $db_user          = $wordpress::params::db_user,  
   $db_host          = $wordpress::params::db_host, 
   $db_user_host     = $wordpress::params::db_user_host, 
   $db_user_host_db  = $wordpress::params::db_user_host_db, 
@@ -62,8 +61,9 @@ class wordpress (
 ) inherits wordpress::params {
  
  validate_string($db_name,$db_user)
- #contain wordpress::apache
- #contain wordpress::php
- #contain wordpress::db
- contain wordpress::app
+ contain wordpress::apache
+ contain wordpress::php
+ contain wordpress::db
+ contain wordpress::app 
+ 
 }

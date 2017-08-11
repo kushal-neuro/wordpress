@@ -1,4 +1,4 @@
-class wordpress::apache inherits wordpress{
+class wordpress::apache inherits wordpress {
 
   #notice("RedHat $conffile")
  

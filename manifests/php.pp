@@ -1,4 +1,4 @@
-class wordpress::php inherits wordpress{
+class wordpress::php inherits wordpress {
   
  $phpname = $osfamily ? {
     'Debian'    => 'php5',

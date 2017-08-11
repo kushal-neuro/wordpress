@@ -1,4 +1,4 @@
-class wordpress::db inherits wordpress{
+class wordpress::db inherits wordpress {
   
     class { '::mysql::server':        
         root_password => $root_password,

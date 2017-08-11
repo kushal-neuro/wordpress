@@ -1,0 +1,3 @@
+---
+wordpress::root_password: Neuro@123
+wordpress::db_user_password: password123
